@@ -23,34 +23,29 @@ function createColorCardsMarkup(galleryItems) {
       alt="${description}"
     />
   </a>
-</div>
-    `;
-    })
-    .join('');
+</div>`;}).join('');
 }
 
 function onGalleryContainerClick(evt) {
     evt.preventDefault();
     const isColorSwatchEl = evt.target.classList.contains('gallery__image');
-   
     if (!isColorSwatchEl) {
       return;
     }
     const swatchEl = evt.target.dataset.source;
-    console.log(swatchEl)
-   
-    
-
-
-    const instance = basicLightbox.create(`
-    <div class="modal">
-    <img src="${swatchEl}" width="800" height="600">
-    
-    </div>
-       
-`)
+  
+    const instance = basicLightbox.create(`  
+     <div class="modal">
+           <img src="${swatchEl}" width="800" height="600"> 
+    </div>`)
 
 instance.show()
 
+window.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+      instance.close();
+  };
+})
 
   }
+  
