@@ -25,21 +25,23 @@ const images = [
   }
 ];
 const gallery = document.querySelector(`.gallery`);
+const cart =document.createDocumentFragment();
 images.forEach((image)=>{
-  const listItem = document.createElement('li');
-  const imgTags=document.createElement(`img`)
-  imgTags.src=image.url;
-  imgTags.alt=image.alt;
-  listItem.append(imgTags);
-  gallery.append(listItem);
-  //style
+const listItem = document.createElement('li');
+const imgTags=document.createElement(`img`)
+imgTags.src=image.url;
+imgTags.alt=image.alt;
+imgTags.width=360;
+imgTags.height=300;
+ listItem.append(imgTags);
+ cart.append(listItem)
+})
+  gallery.append(cart);
+//style
 gallery.style.display='flex';
 gallery.style.flexWrap='wrap';
 gallery.style.gap='48px'
-imgTags.style.width='360px';
-imgTags.style.height='300px';
-listItem.style.listStyle='none';
-listItem.style.flexBasis='calc((100% - 96px) / 3)';
-listItem.style.objectFit='cover';
-})
+gallery.style.listStyle='none';
+gallery.style.flexBasis='calc((100% - 96px) / 3)';
+gallery.style.objectFit='cover';
 
